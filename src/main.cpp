@@ -21,9 +21,15 @@ int main() {
      */
 
     Database db = Database::load("test");
-    const Table &testTable = db.getTable("people");
+    Table &testTable = db.getTable("people");
 
     std::cout << testTable.toString() << std::endl;
-    
+
+    testTable.insert({
+                             {"id", "1"},
+                             {"name", "Diego"}
+                     }
+    );
+
     return 0;
 }

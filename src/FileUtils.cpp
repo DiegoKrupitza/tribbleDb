@@ -1,5 +1,6 @@
 #include <string>
 #include <filesystem>
+
 #include "FileUtils.h"
 
 using namespace MySmallDb;
@@ -23,4 +24,8 @@ std::string FileUtils::tablePath(const std::string &dbname, const std::string &t
 
 std::string FileUtils::columndefinitionLocation(const std::string &dbname, const std::string &tableName) {
     return tablePath(dbname, tableName) + separator() + "table.def";
+}
+
+std::string FileUtils::tableDataLocation(const std::string &dbname, const std::string &tableName, int suffix) {
+    return tablePath(dbname, tableName) + separator() + "tablecontent-bucket-" + std::to_string(suffix) + ".data";
 }
