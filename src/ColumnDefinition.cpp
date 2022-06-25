@@ -73,7 +73,6 @@ std::array<std::string, 2> MySmallDb::parseFieldConstraints(const std::string &c
     size_t pos;
     std::string token;
 
-
     while ((pos = contentCopy.find(',')) != std::string::npos) {
         token = contentCopy.substr(0, pos);
         returnVals[arrayPosition++] = token;

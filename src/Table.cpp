@@ -10,17 +10,12 @@
 
 using namespace MySmallDb;
 
-void Table::insert(const std::map<std::string, std::string> &columnValue) {
-    //TODO: impl
-
-    // pk is the only required field. The remaining fields can be "empty"
-    const ColumnDefinition &pk = this->getPrimaryKey();
-
+int satisfiesPkConstraints(const std::map<std::string, std::string> &columnValue, const ColumnDefinition &pk) {
     if (columnValue.find(pk.name) == columnValue.cend()) {
         throw std::runtime_error("Could not find pk in insert statement!");
     }
 
-    const auto pkInsertField = columnValue.find(pk.name)->second;
+    auto pkInsertField = columnValue.find(pk.name)->second;
     bool validPkType = ColumnTypeValidatorFactory::get(pk.type)->validateValue(pkInsertField);
 
     if (!validPkType) {
@@ -32,12 +27,21 @@ void Table::insert(const std::map<std::string, std::string> &columnValue) {
         throw std::runtime_error("PK has to be a positive number!");
     }
 
+    return pkValue;
+}
+
+void Table::insert(const std::map<std::string, std::string> &columnValue) {
+    // pk is the only required field. The remaining fields can be "empty"
+    const ColumnDefinition &pk = this->getPrimaryKey();
+
+    const auto pkValue = satisfiesPkConstraints(columnValue, pk);
+
     std::stringstream row;
 
     for (const auto &item: this->columnDefinitions) {
         if (item.name == pk.name) {
             // no processing needed since pk is already processed above
-            row << pkInsertField << ";";
+            row << pkValue << ";";
         } else {
             const auto fieldValue =
                     columnValue.find(item.name) != columnValue.cend() ? columnValue.find(item.name)->second : "";

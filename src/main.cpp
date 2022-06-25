@@ -26,7 +26,8 @@ int main() {
     std::cout << testTable.toString() << std::endl;
 
     testTable.insert({
-                             {"id", "1"}
+                             {"id", "1"},
+                             {"name", "Diego"}
                      }
     );
 

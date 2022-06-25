@@ -44,7 +44,6 @@ namespace MySmallDb {
 
         static Table load(const std::string &dbName, const std::string &tableName);
 
-
     };
 }
 
