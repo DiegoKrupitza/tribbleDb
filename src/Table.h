@@ -3,6 +3,7 @@
 #include <exception>
 
 #include "ColumnDefinition.h"
+#include "HashingStrat.h"
 
 #ifndef MYSMALLDB_TABLE_H
 #define MYSMALLDB_TABLE_H
@@ -12,20 +13,26 @@ namespace MySmallDb {
     class Table {
 
     private:
+        const std::string dbName;
         const std::string name;
         std::vector<ColumnDefinition> columnDefinitions;
+        HashingStrategy hashingStrategy;
 
     public:
 
-        Table(const std::string &name, const std::vector<ColumnDefinition> &columnDefinitions) : name(name),
-                                                                                                 columnDefinitions(
-                                                                                                         columnDefinitions) {
+        Table(const std::string &dbName, const std::string &name,
+              const std::vector<ColumnDefinition> &columnDefinitions,
+              const HashingStrategy hashingStrategy) : dbName(dbName),
+                                                       name(name),
+                                                       columnDefinitions(
+                                                               columnDefinitions),
+                                                       hashingStrategy(hashingStrategy) {
             if (name.empty()) {
                 throw std::invalid_argument("Name of a table is not allowed to be empty!");
             }
         }
 
-        void insert(std::map<std::string, std::string> &columnValue);
+        void insert(const std::map<std::string, std::string> &columnValue);
 
         [[nodiscard]] std::string getTableName() const;
 
@@ -33,8 +40,11 @@ namespace MySmallDb {
 
         [[nodiscard]] std::string toString() const;
 
+        [[nodiscard]] const ColumnDefinition &getPrimaryKey();
 
         static Table load(const std::string &dbName, const std::string &tableName);
+
+
     };
 }
 

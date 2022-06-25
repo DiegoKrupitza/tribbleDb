@@ -21,7 +21,7 @@ Database Database::createEmpty(const std::string &dbName) {
     }
 
     std::filesystem::create_directories(dbpath);
-    
+
     return Database{dbName, dbpath, {}};
 }
 
@@ -86,7 +86,7 @@ Table Database::createTable(const std::string &tableName, std::vector<ColumnDefi
 
     f.close();
 
-    return {tableName, columnDefinitions};
+    return {this->name, tableName, columnDefinitions, hashingStrategy};
 }
 
 void Database::deleteDb() {

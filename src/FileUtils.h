@@ -35,5 +35,6 @@ namespace MySmallDb::FileUtils {
      */
     std::string columndefinitionLocation(const std::string &dbname, const std::string &tableName);
 
+    std::string tableDataLocation(const std::string &dbname, const std::string &tableName, int suffix);
 }
 #endif //MYSMALLDB_FILEUTILS_H

@@ -31,6 +31,7 @@ std::vector<ColumnDefinition> ColumnDefinition::load(const std::string &dbName, 
         returnVal.push_back(ColumnDefinition::parse(row));
     }
 
+    f.close();
 
     return returnVal;
 }
@@ -50,7 +51,7 @@ ColumnDefinition ColumnDefinition::parse(std::string &content) {
 
     const bool isPk = constraints[0] == "1";
     const ColumnType type = ColumnTypeHelper::from(constraints[1]);
-    
+
     return {
             fieldName,
             isPk,
