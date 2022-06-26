@@ -1,4 +1,4 @@
-# TribbleDb
+# tribbleDb
 
 I use this project to practice what I just learned in C++. The main idea is to build a small relation database.
 

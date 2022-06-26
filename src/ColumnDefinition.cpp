@@ -7,7 +7,7 @@
 #include <vector>
 #include <sstream>
 
-using namespace MySmallDb;
+using namespace tribbleDb;
 
 std::string ColumnDefinition::toString() const {
     // `name {PK_FLAG,TYPE}`
@@ -66,11 +66,11 @@ ColumnDefinition ColumnDefinition::parse(std::string &content) {
     };
 }
 
-bool MySmallDb::tableDefinitionsContainsPrimaryKey(std::vector<ColumnDefinition> &definitions) {
+bool tribbleDb::tableDefinitionsContainsPrimaryKey(std::vector<ColumnDefinition> &definitions) {
     return std::any_of(definitions.begin(), definitions.end(), [](ColumnDefinition &c) { return c.pk; });
 }
 
-std::array<std::string, 2> MySmallDb::parseFieldConstraints(const std::string &content) {
+std::array<std::string, 2> tribbleDb::parseFieldConstraints(const std::string &content) {
 
     std::array<std::string, 2> returnVals;
 

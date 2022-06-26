@@ -4,7 +4,7 @@
 #include "FileUtils.h"
 
 
-using namespace MySmallDb;
+using namespace tribbleDb;
 
 int HashingStrategyHelper::hash(HashingStrategy hashingStrategy, int val) {
     //TODO: implement various hash modes

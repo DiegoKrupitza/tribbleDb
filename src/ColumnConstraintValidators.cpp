@@ -1,7 +1,7 @@
 
 #include "ColumnConstraintValidators.h"
 
-using namespace MySmallDb;
+using namespace tribbleDb;
 
 bool NonNullColumnConstraintValidator::validate(const Table &table, const ColumnDefinition &columnDefinition,
                                                 const std::map<std::string, std::string> &columnValues) {

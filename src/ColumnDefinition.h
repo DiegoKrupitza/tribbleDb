@@ -1,5 +1,5 @@
-#ifndef MYSMALLDB_COLUMNDEFINITION_H
-#define MYSMALLDB_COLUMNDEFINITION_H
+#ifndef TRIBBLEDB_COLUMNDEFINITION_H
+#define TRIBBLEDB_COLUMNDEFINITION_H
 
 #include <string>
 #include <iostream>
@@ -11,7 +11,7 @@
 #include "ColumnConstraint.h"
 #include <array>
 
-namespace MySmallDb {
+namespace tribbleDb {
 
     struct ColumnDefinition {
 
@@ -36,4 +36,4 @@ namespace MySmallDb {
     std::array<std::string, 2> parseFieldConstraints(const std::string &content);
 }
 
-#endif //MYSMALLDB_COLUMNDEFINITION_H
+#endif //TRIBBLEDB_COLUMNDEFINITION_H

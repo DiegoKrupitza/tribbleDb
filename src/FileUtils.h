@@ -1,10 +1,10 @@
-#ifndef MYSMALLDB_FILEUTILS_H
-#define MYSMALLDB_FILEUTILS_H
+#ifndef TRIBBLEDB_FILEUTILS_H
+#define TRIBBLEDB_FILEUTILS_H
 
 #include <string>
 #include <cstdlib>
 
-namespace MySmallDb::FileUtils {
+namespace tribbleDb::FileUtils {
 
 
     inline char separator() {
@@ -37,4 +37,4 @@ namespace MySmallDb::FileUtils {
 
     std::string tableDataLocation(const std::string &dbname, const std::string &tableName, int suffix);
 }
-#endif //MYSMALLDB_FILEUTILS_H
+#endif //TRIBBLEDB_FILEUTILS_H

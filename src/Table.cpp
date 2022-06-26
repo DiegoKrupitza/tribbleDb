@@ -9,7 +9,7 @@
 #include "FileUtils.h"
 #include "ColumnConstraintValidators.h"
 
-using namespace MySmallDb;
+using namespace tribbleDb;
 
 void Table::insert(const std::map<std::string, std::string> &columnValue) {
 

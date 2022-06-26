@@ -1,12 +1,12 @@
 
-#ifndef MYSMALLDB_COLUMNCONSTRAINTVALIDATORS_H
-#define MYSMALLDB_COLUMNCONSTRAINTVALIDATORS_H
+#ifndef TRIBBLEDB_COLUMNCONSTRAINTVALIDATORS_H
+#define TRIBBLEDB_COLUMNCONSTRAINTVALIDATORS_H
 
 #include <string>
 #include <vector>
 #include "Table.h"
 
-namespace MySmallDb {
+namespace tribbleDb {
     class ColumnConstraintValidator {
     public:
         ColumnConstraintValidator() = default;
@@ -66,4 +66,4 @@ namespace MySmallDb {
     };
 }
 
-#endif //MYSMALLDB_COLUMNCONSTRAINTVALIDATORS_H
+#endif //TRIBBLEDB_COLUMNCONSTRAINTVALIDATORS_H

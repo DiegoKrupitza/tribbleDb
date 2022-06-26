@@ -1,11 +1,11 @@
-#ifndef MYSMALLDB_COLUMNTYPE_H
-#define MYSMALLDB_COLUMNTYPE_H
+#ifndef TRIBBLEDB_COLUMNTYPE_H
+#define TRIBBLEDB_COLUMNTYPE_H
 
 #include <string>
 #include <unordered_map>
 #include <exception>
 
-namespace MySmallDb {
+namespace tribbleDb {
 
 
     enum ColumnType {
@@ -39,4 +39,4 @@ namespace MySmallDb {
 }
 
 
-#endif //MYSMALLDB_COLUMNTYPE_H
+#endif //TRIBBLEDB_COLUMNTYPE_H

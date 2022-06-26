@@ -3,11 +3,11 @@
 
 #include "FileUtils.h"
 
-using namespace MySmallDb;
+using namespace tribbleDb;
 
 std::string FileUtils::dbBaseDir() {
     std::string homeDir(getenv("HOME"));
-    return homeDir + separator() + "mysmalldb";
+    return homeDir + separator() + "tribbleDb";
 }
 
 std::string FileUtils::pathForDb(const std::string &dbname) {

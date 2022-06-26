@@ -1,12 +1,12 @@
-#ifndef MYSMALLDB_COLUMNTYPEVALIDATOR_H
-#define MYSMALLDB_COLUMNTYPEVALIDATOR_H
+#ifndef TRIBBLEDB_COLUMNTYPEVALIDATOR_H
+#define TRIBBLEDB_COLUMNTYPEVALIDATOR_H
 
 #include <string>
 #include <algorithm>
 #include <exception>
 #include "ColumnType.h"
 
-namespace MySmallDb {
+namespace tribbleDb {
 
     class ColumnTypeValidator {
     public:
@@ -68,4 +68,4 @@ namespace MySmallDb {
     };
 }
 
-#endif //MYSMALLDB_COLUMNTYPEVALIDATOR_H
+#endif //TRIBBLEDB_COLUMNTYPEVALIDATOR_H

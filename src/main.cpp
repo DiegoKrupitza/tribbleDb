@@ -4,16 +4,16 @@
 #include "Database.h"
 #include "ColumnDefinition.h"
 
-using namespace MySmallDb;
+using namespace tribbleDb;
 
 
 int main() {
     std::cout << FileUtils::dbBaseDir() << std::endl;
 
     /*Database mySmallDb = Database::createEmpty("test");
-    
-    ColumnDefinition primaryKey{"id", true, INT};
-    ColumnDefinition nameField{"name", false, TEXT};
+
+    ColumnDefinition primaryKey{"id", true, INT,{}};
+    ColumnDefinition nameField{"name", false, TEXT,{}};
 
     std::vector<ColumnDefinition> columns{primaryKey, nameField};
     const Table &testTable = mySmallDb.createTable("people", columns);
@@ -26,7 +26,7 @@ int main() {
     std::cout << testTable.toString() << std::endl;
 
     testTable.insert({
-                             {"id", "1"},
+                             {"id",   "1"},
                              {"name", "Diego"}
                      }
     );

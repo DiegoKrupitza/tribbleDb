@@ -1,11 +1,11 @@
-#ifndef MYSMALLDB_COLUMNCONSTRAINT_H
-#define MYSMALLDB_COLUMNCONSTRAINT_H
+#ifndef TRIBBLEDB_COLUMNCONSTRAINT_H
+#define TRIBBLEDB_COLUMNCONSTRAINT_H
 
 #include <string>
 #include <exception>
 #include <unordered_map>
 
-namespace MySmallDb {
+namespace tribbleDb {
 
 
     enum ColumnConstraint {
@@ -42,4 +42,4 @@ namespace MySmallDb {
 }
 
 
-#endif //MYSMALLDB_COLUMNCONSTRAINT_H
+#endif //TRIBBLEDB_COLUMNCONSTRAINT_H

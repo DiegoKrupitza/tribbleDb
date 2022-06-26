@@ -1,11 +1,11 @@
-#ifndef MYSMALLDB_HASHINGSTRAT_H
-#define MYSMALLDB_HASHINGSTRAT_H
+#ifndef tribbleDb_HASHINGSTRAT_H
+#define tribbleDb_HASHINGSTRAT_H
 
 #include <string>
 #include <unordered_map>
 #include <cstdlib>
 
-namespace MySmallDb {
+namespace tribbleDb {
     enum HashingStrategy {
         MODULO = 0
     };
@@ -38,4 +38,4 @@ namespace MySmallDb {
     };
 
 }
-#endif //MYSMALLDB_HASHINGSTRAT_H
+#endif //tribbleDb_HASHINGSTRAT_H

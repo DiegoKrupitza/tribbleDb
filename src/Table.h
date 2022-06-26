@@ -1,5 +1,5 @@
-#ifndef MYSMALLDB_TABLE_H
-#define MYSMALLDB_TABLE_H
+#ifndef TRIBBLEDB_TABLE_H
+#define TRIBBLEDB_TABLE_H
 
 #include <map>
 #include <string>
@@ -8,7 +8,7 @@
 #include "ColumnDefinition.h"
 #include "HashingStrat.h"
 
-namespace MySmallDb {
+namespace tribbleDb {
 
     class Table {
 
@@ -48,4 +48,4 @@ namespace MySmallDb {
 }
 
 
-#endif //MYSMALLDB_TABLE_H
+#endif //TRIBBLEDB_TABLE_H

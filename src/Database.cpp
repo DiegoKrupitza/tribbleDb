@@ -8,14 +8,14 @@
 #include <fstream>
 #include <string>
 
-using namespace MySmallDb;
+using namespace tribbleDb;
 
 
 Database Database::createEmpty(const std::string &dbName) {
-    auto dbpath = MySmallDb::FileUtils::pathForDb(dbName);
+    auto dbpath = tribbleDb::FileUtils::pathForDb(dbName);
 
     // check whether there is already an existing db
-    if (MySmallDb::FileUtils::exists(dbpath)) {
+    if (tribbleDb::FileUtils::exists(dbpath)) {
         throw std::runtime_error("You cannot override an existing database instance! The db with then name " + dbName +
                                  " already exists!");
     }
@@ -26,10 +26,10 @@ Database Database::createEmpty(const std::string &dbName) {
 }
 
 Database Database::load(const std::string &dbName) {
-    auto dbpath = MySmallDb::FileUtils::pathForDb(dbName);
+    auto dbpath = tribbleDb::FileUtils::pathForDb(dbName);
 
     // check whether there is already an existing db
-    if (!MySmallDb::FileUtils::exists(dbpath)) {
+    if (!tribbleDb::FileUtils::exists(dbpath)) {
         throw std::runtime_error("The db with then name " + dbName +
                                  " does not exist!");
     }
@@ -62,9 +62,9 @@ Table Database::createTable(const std::string &tableName, std::vector<ColumnDefi
         throw std::runtime_error("Your table has to have a primary key!");
     }
 
-    const std::string tableDefinitionLocation = MySmallDb::FileUtils::columndefinitionLocation(this->name, tableName);
+    const std::string tableDefinitionLocation = tribbleDb::FileUtils::columndefinitionLocation(this->name, tableName);
 
-    if (MySmallDb::FileUtils::exists(tableDefinitionLocation)) {
+    if (tribbleDb::FileUtils::exists(tableDefinitionLocation)) {
         throw std::runtime_error("The table with then name " + tableName + " already exists!");
     }
 
