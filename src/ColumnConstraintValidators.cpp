@@ -20,5 +20,6 @@ bool PositiveNumberColumnConstraintValidator::validate(const Table &table, const
 
 bool UniqueColumnConstraintValidator::validate(const Table &table, const ColumnDefinition &columnDefinition,
                                                const std::map<std::string, std::string> &columnValues) {
-    return false;
+    //TODO: implement uniqueness constraint using the query engine.
+    return true;
 }
