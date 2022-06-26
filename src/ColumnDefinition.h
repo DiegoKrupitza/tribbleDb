@@ -1,3 +1,6 @@
+#ifndef MYSMALLDB_COLUMNDEFINITION_H
+#define MYSMALLDB_COLUMNDEFINITION_H
+
 #include <string>
 #include <iostream>
 #include <vector>
@@ -5,10 +8,8 @@
 #include <unordered_map>
 #include <exception>
 #include "ColumnType.h"
+#include "ColumnConstraint.h"
 #include <array>
-
-#ifndef MYSMALLDB_COLUMNDEFINITION_H
-#define MYSMALLDB_COLUMNDEFINITION_H
 
 namespace MySmallDb {
 
@@ -17,8 +18,11 @@ namespace MySmallDb {
         std::string name;
         bool pk;
         ColumnType type;
+        std::vector<ColumnConstraint> constraints;
 
-        ColumnDefinition(const std::string name, bool pk, ColumnType type) : name(name), pk(pk), type(type) {};
+        ColumnDefinition(const std::string name, bool pk, ColumnType type,
+                         const std::vector<ColumnConstraint> &constraints) : name(name), pk(pk), type(type),
+                                                                             constraints(constraints) {};
 
         [[nodiscard]] std::string toString() const;
 

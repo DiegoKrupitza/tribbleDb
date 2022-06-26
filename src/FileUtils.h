@@ -1,8 +1,8 @@
-#include <string>
-#include <cstdlib>
-
 #ifndef MYSMALLDB_FILEUTILS_H
 #define MYSMALLDB_FILEUTILS_H
+
+#include <string>
+#include <cstdlib>
 
 namespace MySmallDb::FileUtils {
 

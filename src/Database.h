@@ -1,3 +1,6 @@
+#ifndef MYSMALLDB_MYSMALLDB_H
+#define MYSMALLDB_MYSMALLDB_H
+
 #include <string>
 #include <vector>
 #include <map>
@@ -5,9 +8,6 @@
 #include "ColumnDefinition.h"
 #include "HashingStrat.h"
 #include "Table.h"
-
-#ifndef MYSMALLDB_MYSMALLDB_H
-#define MYSMALLDB_MYSMALLDB_H
 
 namespace MySmallDb {
 

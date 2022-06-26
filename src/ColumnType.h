@@ -1,10 +1,9 @@
+#ifndef MYSMALLDB_COLUMNTYPE_H
+#define MYSMALLDB_COLUMNTYPE_H
+
 #include <string>
 #include <unordered_map>
 #include <exception>
-
-
-#ifndef MYSMALLDB_COLUMNTYPE_H
-#define MYSMALLDB_COLUMNTYPE_H
 
 namespace MySmallDb {
 

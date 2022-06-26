@@ -1,10 +1,9 @@
-#include <string>
-#include <unordered_map>
-#include <cstdlib>
-
 #ifndef MYSMALLDB_HASHINGSTRAT_H
 #define MYSMALLDB_HASHINGSTRAT_H
 
+#include <string>
+#include <unordered_map>
+#include <cstdlib>
 
 namespace MySmallDb {
     enum HashingStrategy {

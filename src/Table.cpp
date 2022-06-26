@@ -7,63 +7,60 @@
 #include "ColumnTypeValidator.h"
 #include "Table.h"
 #include "FileUtils.h"
+#include "ColumnConstraintValidators.h"
 
 using namespace MySmallDb;
 
-int satisfiesPkConstraints(const std::map<std::string, std::string> &columnValue, const ColumnDefinition &pk) {
-    if (columnValue.find(pk.name) == columnValue.cend()) {
-        throw std::runtime_error("Could not find pk in insert statement!");
-    }
-
-    auto pkInsertField = columnValue.find(pk.name)->second;
-    bool validPkType = ColumnTypeValidatorFactory::get(pk.type)->validateValue(pkInsertField);
-
-    if (!validPkType) {
-        throw std::runtime_error("PK has to be a number!");
-    }
-
-    long pkValue = strtol(pkInsertField.c_str(), nullptr, 10);
-    if (pkValue < 0) {
-        throw std::runtime_error("PK has to be a positive number!");
-    }
-
-    return pkValue;
-}
-
 void Table::insert(const std::map<std::string, std::string> &columnValue) {
-    // pk is the only required field. The remaining fields can be "empty"
-    const ColumnDefinition &pk = this->getPrimaryKey();
 
-    const auto pkValue = satisfiesPkConstraints(columnValue, pk);
+    std::vector<ColumnConstraint> violatedConstraints;
 
     std::stringstream row;
 
     for (const auto &item: this->columnDefinitions) {
-        if (item.name == pk.name) {
-            // no processing needed since pk is already processed above
-            row << pkValue << ";";
-        } else {
-            const auto fieldValue =
-                    columnValue.find(item.name) != columnValue.cend() ? columnValue.find(item.name)->second : "";
 
-            bool validValue = ColumnTypeValidatorFactory::get(item.type)->validateValue(fieldValue);
+        const auto fieldValue =
+                columnValue.find(item.name) != columnValue.cend() ? columnValue.find(item.name)->second : "";
 
-            if (!validValue) {
-                throw std::runtime_error("The column " + item.name + " cannot stored the value: " + fieldValue);
+        bool validValue = ColumnTypeValidatorFactory::get(item.type)->validateValue(fieldValue);
+
+        if (!validValue) {
+            throw std::runtime_error("The column " + item.name + " cannot stored the value: " + fieldValue);
+        }
+
+        // check if constraints satisfied
+        for (const auto &constraint: item.constraints) {
+            ColumnConstraintValidator *pValidator = ColumnConstraintValidatorFactory::get(constraint);
+            bool constraintSatisfied = pValidator->validate(*this, item, columnValue);
+
+            if (!constraintSatisfied) {
+                violatedConstraints.push_back(constraint);
             }
 
-            row << fieldValue << ";";
+            delete pValidator;
         }
+
+        row << fieldValue << ";";
     }
 
+    if (!violatedConstraints.empty()) {
+        throw std::runtime_error("You did not satisfy " + std::to_string(violatedConstraints.size()) + " constraints");
+    }
+
+    // remove the last ';'
     const auto &finalisedRow = row.str().substr(0, row.str().length() - 1);
     std::cout << finalisedRow << std::endl;
 
+    // extract pk for hashing etc
+    const ColumnDefinition &pk = this->getPrimaryKey();
+    long pkValue = strtol(columnValue.find(pk.name)->second.c_str(), nullptr, 10);
+
+    // find the correct bucket
     int fileSuffix = HashingStrategyHelper::hash(this->hashingStrategy, pkValue);
     const auto &dataPathString = FileUtils::tableDataLocation(this->dbName, this->name, fileSuffix);
 
+    // write row to correct bucket
     std::ofstream f(dataPathString, std::ios::app);
-
     f << finalisedRow << std::endl;
 
     f.close();
