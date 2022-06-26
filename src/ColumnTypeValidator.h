@@ -1,10 +1,10 @@
+#ifndef MYSMALLDB_COLUMNTYPEVALIDATOR_H
+#define MYSMALLDB_COLUMNTYPEVALIDATOR_H
+
 #include <string>
 #include <algorithm>
 #include <exception>
 #include "ColumnType.h"
-
-#ifndef MYSMALLDB_COLUMNTYPEVALIDATOR_H
-#define MYSMALLDB_COLUMNTYPEVALIDATOR_H
 
 namespace MySmallDb {
 

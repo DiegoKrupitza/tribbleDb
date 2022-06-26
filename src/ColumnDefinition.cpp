@@ -52,10 +52,17 @@ ColumnDefinition ColumnDefinition::parse(std::string &content) {
     const bool isPk = constraints[0] == "1";
     const ColumnType type = ColumnTypeHelper::from(constraints[1]);
 
+    std::vector<ColumnConstraint> columnLevelConstraints;
+
+    if (isPk) {
+        columnLevelConstraints.insert(columnLevelConstraints.cend(), {NON_NULL, UNIQUE, POSITIVE_NUMBER});
+    }
+
     return {
             fieldName,
             isPk,
-            type
+            type,
+            columnLevelConstraints
     };
 }
 

@@ -1,12 +1,12 @@
+#ifndef MYSMALLDB_TABLE_H
+#define MYSMALLDB_TABLE_H
+
 #include <map>
 #include <string>
 #include <exception>
 
 #include "ColumnDefinition.h"
 #include "HashingStrat.h"
-
-#ifndef MYSMALLDB_TABLE_H
-#define MYSMALLDB_TABLE_H
 
 namespace MySmallDb {
 
